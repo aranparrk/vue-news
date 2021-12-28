@@ -1,8 +1,9 @@
+import Vue from 'vue';
 // # 1 라우터 설치 후 main.js에서 import
 import VueRouter from 'vue-router';
 import NewsView from '../views/NewsView.vue';
 import AskView from '../views/AskView.vue';
-import JobsView from '../views/JobsView.Vue';
+import JobsView from '../views/JobsView.vue';
 
 // # 2 Vue.use로 VueRouter 추가
 Vue.use(VueRouter);
