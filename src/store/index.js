@@ -34,11 +34,11 @@ export const store = new Vuex.Store({
                 console.log(error);
             })
         },
-        FETCH_JOBS(context) {
+        FETCH_JOBS({ commit }) {
             fetchJobsList()
-            .then(response => {
-                console.log('JOBS : ' + response.data);
-                context.commit('SET_JOBS', response.data);
+            .then(({ data }) => {
+                console.log('JOBS : ' + data);
+                commit('SET_JOBS', data);
             })
         }
     },
@@ -52,6 +52,12 @@ export const store = new Vuex.Store({
         },
         SET_JOBS(state, jobs){
             state.jobs = jobs;
+        }
+    },
+    // computed와 동일한 속성이나 store에 존재
+    getters: {
+        fetchedJobs(state) {
+            return state.jobs
         }
     }
 })
