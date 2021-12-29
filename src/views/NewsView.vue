@@ -14,11 +14,13 @@ export default {
         }
     },
     created() {
-        var vm = this;
+        console.log('호출 전 : ', this);
         fetchNewsList()
-        .then(function(response){
+        .then(response => {
             console.log('NewsView Data : ' + response);
-            vm.users = response.data;
+            // 화살표 함수로 바인딩을 했을 경우
+            console.log('호출 후 : ', this);
+            this.users = response.data;
         })
         .catch(function(error){
             console.log(error);
