@@ -1,13 +1,13 @@
 <template>
-    <news-view></news-view>
+    <list-item></list-item>
 </template>
 
 <script>
-import NewsView from '../components/ListItem.vue';
+import ListItem from '../components/ListItem.vue';
 
 export default {
     components: {
-        NewsView
+        ListItem
     }
 }
 </script>

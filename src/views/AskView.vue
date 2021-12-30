@@ -1,13 +1,13 @@
 <template>
-    <ask-view></ask-view>
+    <list-item></list-item>
 </template>
 
 <script>
-import AskView from '../components/ListItem.vue';
+import ListItem from '../components/ListItem.vue';
 
 export default {
     components: {
-        AskView
+        ListItem
     }
 }
 </script>
