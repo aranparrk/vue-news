@@ -21,7 +21,10 @@ export const store = new Vuex.Store({
     // computed와 동일한 속성이나 store에 존재
     getters: {
         fetchedJobs(state) {
-            return state.jobs
+            return state.jobs;
+        },
+        fetchedItem(state) {
+            return state.item;
         }
     }
 })
