@@ -14,7 +14,7 @@
                         </a>
                     </p>
                     <small class="link-text">
-                        by
+                        {{ item.time_ago }} by
                         <!-- <router-link v-bind:to="'/user/' + item.user">{{ item.user }}</router-link> -->
                         <router-link v-bind:to="`/user/${item.user}`" class="link-text">{{ item.user }}</router-link>
                     </small>
@@ -73,6 +73,6 @@ export default {
 }
 
 .link-text {
-    color: #828288
+    color: #828288;
 }
 </style>
