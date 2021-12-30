@@ -3,7 +3,8 @@
 </template>
 
 <script>
-import AskView from '../components/ListItem.vue'
+import AskView from '../components/ListItem.vue';
+
 export default {
     components: {
         AskView
