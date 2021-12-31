@@ -14,11 +14,11 @@ export default {
   components: {
     UserProfile
   },
-  computed: {
-    userInfo() {
-      return this.$store.state.user;
-    }
-  },
+  // computed: {
+  //   userInfo() {
+  //     return this.$store.state.user;
+  //   }
+  // },
   created() {
     console.log(this.$route.params.id);
     const userName = this.$route.params.id;
