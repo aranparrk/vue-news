@@ -5,12 +5,12 @@
             <i class="fas fa-user"></i>
         </div>
         <div class="user-descriptions">
-            <div>{{ userInfo.id }}</div>
-            <!-- <router-link :to="`/user/${userInfo.user}`">
-            {{ userInfo.id }}
+            <div>{{ info.id }}</div>
+            <!-- <router-link :to="`/user/${info.user}`">
+            {{ info.id }}
             </router-link> -->
             <div class="time">
-            {{ userInfo.created }}
+            {{ info.created }}
             </div>
         </div>
     </div>
@@ -18,11 +18,14 @@
 
 <script>
 export default {
-  computed: {
-    userInfo() {
-      return this.$store.state.user;
-    }
-  },
+    props: {
+        info: Object
+    },
+    // computed: {
+    //     userInfo() {
+    //     return this.$store.state.user;
+    //     }
+    // },
 }
 </script>
 
