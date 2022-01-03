@@ -5,19 +5,17 @@ export default function createListView(name) {
     return {
         name: name,
         created() {
+            // 재사용할 인스턴스(컴포넌트) 옵션들이 들어갈 자리
             bus.$emit('start:spinner');
-            setTimeout(() => {
-                this.$store.dispatch('FETCH_LIST', this.$route.name)
-                .then(() => {
-                    console.log('fetched');
-                    bus.$emit('end:spinner');
-                })
-                .catch(error => {
-                    console.log(error);
-                }); 
-            }, 3000);
+            this.$store.dispatch('FETCH_LIST', this.$route.name)
+            .then(() => {
+                console.log('fetched');
+                bus.$emit('end:spinner');
+            })
+            .catch(error => {
+                console.log(error);
+            }); 
         },
-        // 재사용할 인스턴스(컴포넌트) 옵션들이 들어갈 자리
         render(createElement) {
             return createElement(ListView);
         }
