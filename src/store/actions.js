@@ -7,6 +7,7 @@ export default {
             console.log('NEWS : ', response.data);
             // # 3 mutations 호출
             context.commit('SET_NEWS', response.data);
+            return response;
         })
         .catch(error => {
             console.log(error);
