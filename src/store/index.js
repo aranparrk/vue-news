@@ -12,7 +12,8 @@ export const store = new Vuex.Store({
         ask: [],
         jobs: [],
         user: {},
-        item: {}
+        item: {},
+        list: []
     },
     // # 1 vuex를 이용해서 api 호출, 비동기 호출
     actions,
