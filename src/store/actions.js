@@ -2,7 +2,7 @@ import { fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo, fetchComment
 
 export default {
     // FETCH_NEWS(context) {
-    //     fetchNewsList()
+    //     return fetchNewsList()
     //     .then(response => {
     //         console.log('NEWS : ', response.data);
     //         // # 3 mutations 호출
@@ -14,7 +14,7 @@ export default {
     //     })
     // },
     // FETCH_ASK({ commit }) {
-    //     fetchAskList()
+    //     return fetchAskList()
     //     .then(({ data }) => {
     //         console.log('ASK : ', data);
     //         commit('SET_ASK', data);
@@ -24,7 +24,7 @@ export default {
     //     })
     // },
     // FETCH_JOBS({ commit }) {
-    //     fetchJobsList()
+    //     return fetchJobsList()
     //     .then(({ data }) => {
     //         console.log('JOBS : ' + data);
     //         commit('SET_JOBS', data);
@@ -34,7 +34,7 @@ export default {
     //     })
     // },
     FETCH_USER({ commit }, name) {
-        fetchUserInfo(name)
+        return fetchUserInfo(name)
         .then(({ data }) => {
             console.log('USER : ' + data);
             commit('SET_USER', data);
@@ -44,7 +44,7 @@ export default {
         })
     },
     FETCH_ITEM({ commit }, id) {
-        fetchCommentItem(id)
+        return fetchCommentItem(id)
         .then(({ data }) => {
             console.log('ITEM : ' + data);
             commit('SET_ITEM', data);
@@ -53,9 +53,16 @@ export default {
             console.log(error);
         })
     },
+    // # 2 실행
     FETCH_LIST({ commit }, pageName) {
-        fetchList(pageName)
-        .then(({ data }) => commit('SET_LIST', data))
+        // # 3 API 호출
+        return fetchList(pageName)
+        .then(response =>  {
+            // # 4
+            console.log(4);
+            commit('SET_LIST', response.data);
+            return response;
+        })
         .catch(error => console.log(error));
     }
 }
