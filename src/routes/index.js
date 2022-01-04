@@ -41,7 +41,7 @@ export const router = new VueRouter({
                     //  # 5
                     console.log(5);
                     console.log('Mixin fetched');
-                    bus.$emit('end:spinner');
+                    // bus.$emit('end:spinner');
                     next();
                 })
                 .catch((error) => {
@@ -53,13 +53,35 @@ export const router = new VueRouter({
             path: '/ask',
             name: 'ask',
             // component: createListView('AskView')
-            component: AskView
+            component: AskView,
+            beforeEnter: (to, from, next) => {
+                bus.$emit('start:spinner');
+                store.dispatch('FETCH_LIST', to.name)
+                .then(() => {
+                    // bus.$emit('end:spinner');
+                    next();
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+            }
         },
         {
             path: '/jobs',
             name: 'jobs',
             // component: createListView('AskView')
-            component: JobsView
+            component: JobsView,
+            beforeEnter: (to, from, next) => {
+                bus.$emit('start:spinner');
+                store.dispatch('FETCH_LIST', to.name)
+                .then(() => {
+                    // bus.$emit('end:spnnier');
+                    next();
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+            }
         },
         {
             path: '/user/:id',
