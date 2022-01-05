@@ -15,8 +15,13 @@ function fetchAskList() {
     return axios.get(`${config.baseUrl}ask/1.json`);
 }
 
-function fetchJobsList() {
-    return axios.get(`${config.baseUrl}jobs/1.json`)
+async function fetchJobsList() {
+    try {
+        const response = await axios.get(`${config.baseUrl}jobs/1.json`);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 function fetchUserInfo(username) {

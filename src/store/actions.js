@@ -1,68 +1,44 @@
 import { fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo, fetchCommentItem, fetchList } from '../api/index.js';
 
 export default {
-    // FETCH_NEWS(context) {
-    //     return fetchNewsList()
-    //     .then(response => {
-    //         console.log('NEWS : ', response.data);
-    //         // # 3 mutations 호출
-    //         context.commit('SET_NEWS', response.data);
-    //         return response;
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     })
-    // },
-    // FETCH_ASK({ commit }) {
-    //     return fetchAskList()
-    //     .then(({ data }) => {
-    //         console.log('ASK : ', data);
-    //         commit('SET_ASK', data);
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     })
-    // },
-    // FETCH_JOBS({ commit }) {
-    //     return fetchJobsList()
-    //     .then(({ data }) => {
-    //         console.log('JOBS : ' + data);
-    //         commit('SET_JOBS', data);
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     })
-    // },
-    FETCH_USER({ commit }, name) {
-        return fetchUserInfo(name)
-        .then(({ data }) => {
-            console.log('USER : ' + data);
-            commit('SET_USER', data);
-        })
-        .catch(error => {
-            console.log(error);
-        })
+    // async
+    async FETCH_NEWS(context) {
+        const response = await fetchNewsList();
+        context.commit('SET_NEWS', response.data);
+        return response;
     },
-    FETCH_ITEM({ commit }, id) {
-        return fetchCommentItem(id)
-        .then(({ data }) => {
-            console.log('ITEM : ' + data);
-            commit('SET_ITEM', data);
-        })
-        .catch(error => {
-            console.log(error);
-        })
-    },
-    // # 2 실행
-    FETCH_LIST({ commit }, pageName) {
-        // # 3 API 호출
-        return fetchList(pageName)
-        .then(response =>  {
-            // # 4
-            console.log(4);
-            commit('SET_LIST', response.data);
+
+    // promise
+    async FETCH_ASK({ commit }) {
+        try {
+            const response = await fetchAskList();
+            commit('SET_ASK', response.data);
             return response;
-        })
-        .catch(error => console.log(error));
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    async FETCH_JOBS({ commit }) {
+        const response = await fetchJobsList()
+        commit('SET_JOBS', response.data);
+        return response
+    },
+    async FETCH_USER(context, name) {
+        const response = await fetchUserInfo(name);
+        console.log('USER : ' + response.data);
+        context.commit('SET_USER', response.data);
+        return response;
+    },
+    async FETCH_ITEM(context, id) {
+        const response = await fetchCommentItem(id);
+        console.log('ITEM : ' + data);
+        context.commit('SET_ITEM', data);
+        return response;
+    },
+    async FETCH_LIST(context, pageName) {
+        const response = await fetchList(pageName);
+        console.log(4);
+        context.commit('SET_LIST', response.data);
+        return response;
     }
 }
